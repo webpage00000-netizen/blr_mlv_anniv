@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>anniversary · green & gold</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0b1710;  /* deep black-green base */
+      background: radial-gradient(circle at 30% 20%, #1a3324, #050b08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Quicksand', sans-serif;
+      padding: 1.2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* subtle animated texture */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.04"><path d="M60 40L80 20 100 40 120 20 140 40 160 20 180 40 160 60 180 80 160 100 180 120 160 140 180 160 160 180 140 160 120 180 100 160 80 180 60 160 40 180 20 160 40 140 20 120 40 100 20 80 40 60 20 40 40 20 60 40 40 60 20 80 40 100 20 120 40 140 20 160 40 180 60 160 80 180 100 160 120 180 140 160 160 180 180 160 160 140 180 120 160 100 180 80 160 60 180 40 160 20 140 40 120 20 100 40 80 20 60 40Z" fill="%23d4af37" /></svg>');
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+      animation: grainShift 22s infinite alternate ease-in-out;
+    }
+    @keyframes grainShift {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+      100% { transform: scale(1.08) rotate(2deg); opacity: 0.6; }
+    }
+
+    /* floating orbs — green & gold */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.25;
+      animation: orbFloat 14s infinite alternate ease-in-out;
+    }
+    .orb1 {
+      width: 280px;
+      height: 280px;
+      background: #2d5e3a;
+      top: -80px;
+      left: -100px;
+      animation-duration: 16s;
+    }
+    .orb2 {
+      width: 320px;
+      height: 320px;
+      background: #8a7a3a;
+      bottom: -100px;
+      right: -120px;
+      animation-duration: 20s;
+      animation-delay: -4s;
+      opacity: 0.15;
+    }
+    .orb3 {
+      width: 200px;
+      height: 200px;
+      background: #c9a84c;
+      top: 40%;
+      right: -60px;
+      animation-duration: 18s;
+      animation-delay: -8s;
+      opacity: 0.12;
+    }
+    .orb4 {
+      width: 180px;
+      height: 180px;
+      background: #1f402a;
+      bottom: 20%;
+      left: -50px;
+      animation-duration: 15s;
+      animation-delay: -2s;
+      opacity: 0.2;
+    }
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(35px, -35px) scale(1.25); }
+    }
+
+    /* main card — liquid glass with dark green/gold tint */
+    .anniversary-card {
+      position: relative;
+      z-index: 10;
+      max-width: 480px;
+      width: 100%;
+      background: rgba(15, 30, 20, 0.35);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 3.5rem 3.5rem 2.8rem 2.8rem;
+      padding: 2.2rem 1.8rem 2.5rem;
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(212, 175, 55, 0.2),
+        inset 0 0 0 1px rgba(212, 175, 55, 0.15),
+        inset 0 12px 30px rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+      animation: cardGlow 6s infinite alternate;
+    }
+    @keyframes cardGlow {
+      0% { 
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.2), inset 0 0 0 1px rgba(212, 175, 55, 0.15), inset 0 12px 30px rgba(212, 175, 55, 0.05); 
+      }
+      100% { 
+        box-shadow: 0 40px 70px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(212, 175, 55, 0.3), inset 0 0 0 2px rgba(212, 175, 55, 0.25), inset 0 20px 40px rgba(212, 175, 55, 0.08); 
+      }
+    }
+
+    /* shimmer overlay with gold hint */
+    .anniversary-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .anniversary-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ornaments — gold */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin: 0.2rem 0 0.8rem;
+      color: rgba(212, 175, 55, 0.4);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+    .ornament i {
+      color: #c9a84c;
+      opacity: 0.6;
+      font-size: 0.8rem;
+    }
+    .ornament .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #ece3d0;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.05);
+      margin-bottom: 0.1rem;
+      animation: titlePulse 4s infinite alternate;
+    }
+    @keyframes titlePulse {
+      0% { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.05); letter-spacing: 2px; }
+      100% { text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 175, 55, 0.15); letter-spacing: 4px; }
+    }
+    .title span {
+      font-weight: 600;
+      color: #d4af37;
+    }
+
+    .sub {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #b8a88a;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      display: inline-block;
+      padding: 0.4rem 1.4rem;
+      backdrop-filter: blur(4px);
+      background: rgba(212, 175, 55, 0.04);
+      border-radius: 40px;
+    }
+
+    /* ENVELOPE — now clickable */
+    .envelope-wrapper {
+      position: relative;
+      width: 210px;
+      height: 148px;
+      margin: 0.8rem auto 1.8rem;
+      cursor: pointer; /* 👈 changed from default to pointer */
+      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.7));
+      animation: envelopeFloat 5s infinite alternate ease-in-out;
+      transition: transform 0.3s ease;
+    }
+    .envelope-wrapper:hover {
+      transform: scale(1.05) translateY(-8px);
+      filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.9));
+    }
+    .envelope-wrapper:active {
+      transform: scale(0.95) translateY(0px);
+    }
+    @keyframes envelopeFloat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-8px) rotate(0.6deg); }
+    }
+
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #b8a088;
+      background: linear-gradient(145deg, #d4bea8, #b0987e);
+      border-radius: 8px 8px 14px 14px;
+      box-shadow: inset 0 -4px 0 #8a7a66, 0 12px 28px rgba(0, 0, 0, 0.6);
+      border: 1px solid #a08870;
+      transition: 0.2s;
+      overflow: hidden;
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #b8a088;
+      background: linear-gradient(135deg, #e6d4c0 0%, #c4b098 80%);
+      clip-path: polygon(0 0, 50% 55%, 100% 0);
+      border-radius: 6px 6px 0 0;
+      border-bottom: 2px solid #9a8a76;
+      box-shadow: inset 0 -6px 12px rgba(60, 40, 30, 0.2);
+      animation: flapShimmer 8s infinite alternate;
+    }
+    @keyframes flapShimmer {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.06); }
+    }
+
+    .envelope::after {
+      content: '';
+      position: absolute;
+      top: 42%;
+      left: 12%;
+      width: 76%;
+      height: 2px;
+      background: rgba(80, 60, 40, 0.12);
+      border-radius: 2px;
+      box-shadow: 0 10px 0 rgba(80, 60, 40, 0.06), 0 20px 0 rgba(80, 60, 40, 0.04);
+    }
+
+    /* heart seal — gold */
+    .seal {
+      position: absolute;
+      top: 28%;
+      left: 50%;
+      transform: translate(-50%, -10%);
+      font-size: 2.4rem;
+      color: #b8962e;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+      z-index: 5;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+      background: rgba(212, 175, 55, 0.08);
+      border-radius: 60%;
+      padding: 0.1rem 0.3rem;
+      backdrop-filter: blur(2px);
+      animation: heartBeat 2.4s infinite alternate ease-in-out;
+    }
+    @keyframes heartBeat {
+      0% { transform: translate(-50%, -10%) scale(0.95); }
+      100% { transform: translate(-50%, -12%) scale(1.1); }
+    }
+    .seal i {
+      font-size: 2.8rem;
+    }
+
+    .letter-peek {
+      position: absolute;
+      bottom: -6px;
+      left: 18%;
+      width: 64%;
+      height: 18px;
+      background: #f5eee9;
+      background: linear-gradient(0deg, #efe5dd, #faf3ee);
+      border-radius: 0 0 20px 20px;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.06);
+      border: 1px solid #b8a088;
+      border-top: none;
+      opacity: 0.6;
+    }
+
+    .wax-seal {
+      position: absolute;
+      bottom: -4px;
+      right: 16%;
+      width: 26px;
+      height: 26px;
+      background: #b8962e;
+      background: radial-gradient(circle at 30% 30%, #d4af37, #8a7020);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6), inset 0 -2px 4px #5a4a1a;
+      border: 1px solid #8a7020;
+      transform: rotate(12deg);
+      z-index: 6;
+      animation: waxGlow 3s infinite alternate;
+    }
+    @keyframes waxGlow {
+      0% { box-shadow: 0 4px 12px rgba(0,0,0,0.6), inset 0 -2px 4px #5a4a1a; }
+      100% { box-shadow: 0 4px 24px rgba(184, 150, 46, 0.5), inset 0 -2px 6px #6a5a1a; }
+    }
+    .wax-seal::after {
+      content: '❤';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 13px;
+      color: #f2e0b0;
+      text-shadow: 0 0 6px #4a3a10;
+    }
+
+    /* 👇 NEW: click hint on envelope */
+    .click-hint {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      color: rgba(212, 175, 55, 0.5);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      animation: hintPulse 2s infinite ease-in-out;
+      font-weight: 300;
+    }
+    .click-hint i {
+      margin-right: 4px;
+      color: #d4af37;
+    }
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; transform: translateX(-50%) translateY(-3px); }
+    }
+
+    .anniversary-message {
+      margin: 1.2rem 0 0.8rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #e6dcc8;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      border-top: 1px solid rgba(212, 175, 55, 0.12);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+      padding: 0.7rem 0;
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+      transition: 0.3s;
+      animation: msgPulse 5s infinite alternate;
+    }
+    @keyframes msgPulse {
+      0% { opacity: 0.85; letter-spacing: 1px; }
+      100% { opacity: 1; letter-spacing: 2.5px; }
+    }
+    .anniversary-message i {
+      color: #d4af37;
+      margin: 0 6px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.06);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      color: #d4c8b0;
+      font-weight: 300;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      margin-top: 0.2rem;
+      animation: badgeGlow 4s infinite alternate;
+    }
+    @keyframes badgeGlow {
+      0% { border-color: rgba(212, 175, 55, 0.15); box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+      100% { border-color: rgba(212, 175, 55, 0.4); box-shadow: 0 0 24px rgba(212, 175, 55, 0.08); }
+    }
+    .date-badge i {
+      margin-right: 8px;
+      color: #d4af37;
+    }
+
+    .footer-note {
+      margin-top: 1.6rem;
+      font-size: 0.8rem;
+      color: #a8987a;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      padding-top: 1rem;
+      animation: footerFade 6s infinite alternate;
+    }
+    @keyframes footerFade {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+    .footer-note i {
+      color: #d4af37;
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+    .footer-note span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    /* responsive */
+    @media (max-width: 480px) {
+      .anniversary-card {
+        padding: 1.6rem 1rem 2rem;
+        border-radius: 2.8rem 2.8rem 2rem 2rem;
+      }
+      .title {
+        font-size: 1.7rem;
+      }
+      .envelope-wrapper {
+        width: 180px;
+        height: 128px;
+      }
+      .seal i {
+        font-size: 2.2rem;
+      }
+      .anniversary-message {
+        font-size: 1.05rem;
+        width: 92%;
+      }
+      .date-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1.4rem;
+      }
+      .orb1, .orb2, .orb3, .orb4 {
+        filter: blur(40px);
+      }
+      .click-hint {
+        font-size: 0.55rem;
+        bottom: -28px;
+      }
+    }
+    @media (max-width: 380px) {
+      .envelope-wrapper {
+        width: 150px;
+        height: 108px;
+      }
+      .seal i {
+        font-size: 1.8rem;
+      }
+      .title {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* floating sparkles — gold tint */
+    .sparkle {
+      position: absolute;
+      color: rgba(212, 175, 55, 0.12);
+      font-size: 1.8rem;
+      pointer-events: none;
+      animation: sparkleFloat 8s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+    @keyframes sparkleFloat {
+      0% { transform: translateY(0px) rotate(0deg) scale(0.8); opacity: 0.15; }
+      100% { transform: translateY(-20px) rotate(12deg) scale(1.2); opacity: 0.4; }
+    }
+
+    .float-heart {
+      position: absolute;
+      color: rgba(212, 175, 55, 0.06);
+      font-size: 1.2rem;
+      pointer-events: none;
+      animation: heartFloat 10s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+    @keyframes heartFloat {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.06; }
+      100% { transform: translate(-15px, -30px) scale(1.4); opacity: 0.18; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+
+  <!-- floating sparkles & hearts -->
+  <div class="sparkle" style="top: 6%; left: 8%;">✦</div>
+  <div class="sparkle" style="bottom: 14%; right: 6%; font-size: 1.4rem; animation-duration: 10s;">✧</div>
+  <div class="sparkle" style="top: 22%; right: 10%; font-size: 1.0rem; animation-duration: 12s;">✦</div>
+  <div class="float-heart" style="top: 15%; left: 4%;"><i class="fas fa-heart"></i></div>
+  <div class="float-heart" style="bottom: 20%; right: 4%; animation-duration: 14s;"><i class="fas fa-heart"></i></div>
+
+  <!-- main card -->
+  <div class="anniversary-card">
+
+    <div class="ornament">
+      <i class="fas fa-heart"></i>
+      <span class="line"></span>
+      <i class="fas fa-arrow-right" style="opacity:0.25;"></i>
+      <span class="line"></span>
+      <i class="fas fa-heart"></i>
+    </div>
+
+    <h1 class="title">forever <span>·</span> yours</h1>
+    <div class="sub">anniversary</div>
+
+    <!-- ENVELOPE - clickable! -->
+    <div class="envelope-wrapper" onclick="window.location.href='cat.html';">
+      <div class="envelope">
+        <div class="seal"><i class="fas fa-heart" style="color: #c9a84c;"></i></div>
+        <div class="letter-peek"></div>
+        <div class="wax-seal"></div>
+      </div>
+      <div class="click-hint">
+        <i class="fas fa-hand-pointer"></i> open me
+      </div>
+    </div>
+
+    <div class="anniversary-message">
+      <i class="fas fa-quote-left" style="font-size: 0.8rem;"></i>
+      a love story, still unfolding
+      <i class="fas fa-quote-right" style="font-size: 0.8rem;"></i>
+    </div>
+
+    <div class="date-badge">
+      <i class="fas fa-calendar-alt"></i>  ·  since 2021  · 
+    </div>
+
+    <div class="footer-note">
+      <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
+      <span>made with <i class="fas fa-heart" style="color: #d4af37; font-size: 0.7rem;"></i> for you</span>
+      <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
+      <span style="font-weight: 300;">&nbsp; 08·25</span>
+    </div>
+
+    <div style="margin-top: 0.6rem; display: flex; justify-content: center; gap: 0.3rem; opacity:0.2;">
+      <i class="fas fa-asterisk" style="font-size: 0.4rem; color:#d4af37;"></i>
+      <i class="fas fa-asterisk" style="font-size: 0.4rem; color:#d4af37;"></i>
+      <i class="fas fa-asterisk" style="font-size: 0.4rem; color:#d4af37;"></i>
+    </div>
+  </div>
+
+</body>
+</html>

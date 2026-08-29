@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>cat love · animated stickers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0b1710;
+      background: radial-gradient(circle at 30% 20%, #1a3324, #050b08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Quicksand', sans-serif;
+      padding: 1.2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.2;
+      animation: orbFloat 14s infinite alternate ease-in-out;
+    }
+    .orb1 { width: 280px; height: 280px; background: #2d5e3a; top: -80px; left: -100px; animation-duration: 16s; }
+    .orb2 { width: 320px; height: 320px; background: #8a7a3a; bottom: -100px; right: -120px; animation-duration: 20s; animation-delay: -4s; opacity: 0.12; }
+    .orb3 { width: 200px; height: 200px; background: #c9a84c; top: 40%; right: -60px; animation-duration: 18s; animation-delay: -8s; opacity: 0.1; }
+    .orb4 { width: 180px; height: 180px; background: #1f402a; bottom: 20%; left: -50px; animation-duration: 15s; animation-delay: -2s; opacity: 0.15; }
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(35px, -35px) scale(1.25); }
+    }
+
+    .love-card {
+      position: relative;
+      z-index: 10;
+      max-width: 520px;
+      width: 100%;
+      background: rgba(15, 30, 20, 0.35);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 3.5rem 3.5rem 2.8rem 2.8rem;
+      padding: 2rem 1.8rem 2.2rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.2), inset 0 0 0 1px rgba(212, 175, 55, 0.15), inset 0 12px 30px rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      text-align: center;
+      animation: cardGlow 6s infinite alternate, cardEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      transform-origin: center;
+      opacity: 0;
+      transform: scale(0.92) translateY(20px);
+    }
+    @keyframes cardEntrance {
+      0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes cardGlow {
+      0% { box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.2), inset 0 0 0 1px rgba(212, 175, 55, 0.15), inset 0 12px 30px rgba(212, 175, 55, 0.05); }
+      100% { box-shadow: 0 40px 70px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(212, 175, 55, 0.3), inset 0 0 0 2px rgba(212, 175, 55, 0.25), inset 0 20px 40px rgba(212, 175, 55, 0.08); }
+    }
+    .love-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .love-card>* {
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.5rem;
+      z-index: 20;
+      color: rgba(212, 175, 55, 0.6);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 0.9rem;
+      border-radius: 40px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeInBack 0.6s ease 0.4s forwards;
+    }
+    @keyframes fadeInBack {
+      0% { opacity: 0; transform: translateX(-10px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .back-btn:hover {
+      color: #d4af37;
+      border-color: rgba(212, 175, 55, 0.4);
+      background: rgba(212, 175, 55, 0.05);
+      transform: translateX(-4px);
+    }
+    .back-btn i {
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    .back-btn:hover i {
+      transform: translateX(-3px);
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 1.7rem;
+      color: #ece3d0;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      margin: 0.5rem 0 0.2rem;
+      letter-spacing: 2px;
+      animation: titleSlide 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    }
+    @keyframes titleSlide {
+      0% { opacity: 0; transform: translateY(-10px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .title span {
+      color: #d4af37;
+      font-weight: 600;
+    }
+
+    .sub {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #b8a88a;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      background: rgba(212, 175, 55, 0.03);
+      border-radius: 40px;
+      animation: subFade 0.8s ease 0.3s both;
+    }
+    @keyframes subFade {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .cat-garden {
+      margin: 0.5rem 0 0.8rem;
+      padding: 0.8rem 0.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+      animation: gameSlide 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+    }
+    @keyframes gameSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .garden-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #b8a88a;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .garden-title i {
+      color: #d4af37;
+      margin: 0 4px;
+    }
+
+    .cat-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin: 0.5rem 0;
+    }
+
+    .cat-sticker {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 -3px 8px rgba(0, 0, 0, 0.05);
+      border: 2px solid rgba(212, 175, 55, 0.15);
+      position: relative;
+      animation: catFloat 3s infinite alternate ease-in-out;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 30%, #f5e6d3, #d4c4b0);
+    }
+    .cat-sticker:nth-child(1) { animation-delay: 0s; background: radial-gradient(circle at 30% 30%, #f5d0c0, #d4a898); }
+    .cat-sticker:nth-child(2) { animation-delay: 0.4s; background: radial-gradient(circle at 30% 30%, #c0d4e8, #8aa8b8); }
+    .cat-sticker:nth-child(3) { animation-delay: 0.8s; background: radial-gradient(circle at 30% 30%, #e8e0c0, #c8b890); }
+    .cat-sticker:nth-child(4) { animation-delay: 1.2s; background: radial-gradient(circle at 30% 30%, #e8c8d8, #c8a0b0); }
+
+    @keyframes catFloat {
+      0% { transform: translateY(0px) rotate(-2deg); }
+      100% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    .cat-sticker:hover {
+      transform: scale(1.08) rotate(4deg);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.25);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    .cat-sticker:active {
+      transform: scale(0.92);
+    }
+
+    .cat-sticker .cat-gif {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      border-radius: 50%;
+      transition: all 0.3s;
+      background: transparent;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    .cat-sticker:hover .cat-gif {
+      transform: scale(1.05);
+    }
+
+    .cat-sticker.viewed {
+      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.15), 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .cat-sticker.viewed::after {
+      content: '✓';
+      position: absolute;
+      bottom: 2px;
+      right: 4px;
+      font-size: 1rem;
+      color: #d4af37;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* POP-UP OVERLAY */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), backdrop-filter 0.6s ease;
+      padding: 1.5rem;
+    }
+    .popup-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup-content {
+      background: #f5ede4;
+      background: linear-gradient(145deg, #faf3ea, #e8ddd0);
+      border-radius: 2.8rem;
+      padding: 2.5rem 2.2rem 2.8rem;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      text-align: center;
+      transform: scale(0.85) translateY(30px) rotate(-2deg);
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+    .popup-overlay.active .popup-content {
+      transform: scale(1) translateY(0) rotate(0deg);
+    }
+
+    .popup-content .popup-gif {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 0.8rem;
+      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
+      animation: popCatFloat 2s infinite alternate ease-in-out;
+      background: transparent;
+    }
+    @keyframes popCatFloat {
+      0% { transform: translateY(0) scale(1) rotate(-3deg); }
+      100% { transform: translateY(-8px) scale(1.05) rotate(3deg); }
+    }
+
+    .popup-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: #2a1f18;
+      margin: 0.4rem 0 0.6rem;
+    }
+    .popup-content h2 span {
+      color: #d4af37;
+      font-weight: 600;
+    }
+
+    .popup-content .message {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3a2a1e;
+      line-height: 1.6;
+      padding: 0.4rem 0;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      margin: 0.6rem 0;
+    }
+    .popup-content .sub-message {
+      font-size: 0.8rem;
+      color: #8a7a6a;
+      letter-spacing: 1px;
+      margin-top: 0.8rem;
+    }
+    .popup-content .sub-message i {
+      color: #d4af37;
+      margin: 0 4px;
+    }
+
+    .popup-hint {
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      color: #b8a88a;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+      padding-top: 0.8rem;
+      animation: hintPulse 2s infinite ease-in-out;
+    }
+    .popup-hint i {
+      color: #d4af37;
+      margin: 0 4px;
+    }
+    @keyframes hintPulse {
+      0%,
+      100% { opacity: 0.5; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-3px); }
+    }
+
+    .game-feedback {
+      font-size: 0.85rem;
+      color: #d4c8b0;
+      margin: 0.6rem 0 0.2rem;
+      min-height: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+    }
+    .game-feedback i {
+      color: #d4af37;
+      margin: 0 4px;
+    }
+
+    .footer-note {
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      color: #8a7a6a;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.06);
+      padding-top: 0.8rem;
+      animation: footerFade 1s ease 0.6s both;
+    }
+    @keyframes footerFade {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .footer-note i {
+      color: #d4af37;
+      opacity: 0.5;
+      font-size: 0.6rem;
+    }
+
+    @media (max-width: 480px) {
+      .love-card { padding: 1.8rem 1rem 1.8rem; border-radius: 2.8rem 2.8rem 2rem 2rem; }
+      .title { font-size: 1.4rem; }
+      .cat-sticker { width: 80px; height: 80px; }
+      .cat-grid { gap: 0.8rem; }
+      .popup-content { padding: 2rem 1.5rem 2.2rem; }
+      .popup-content h2 { font-size: 1.3rem; }
+      .popup-content .popup-gif { width: 90px; height: 90px; }
+      .back-btn { font-size: 0.7rem; padding: 0.3rem 0.7rem; top: 0.8rem; left: 1rem; }
+      .cat-sticker.viewed::after {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+        bottom: 0px;
+        right: 2px;
+      }
+    }
+    @media (max-width: 380px) {
+      .cat-sticker { width: 68px; height: 68px; }
+      .cat-grid { gap: 0.6rem; }
+      .cat-sticker.viewed::after {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+      }
+      .popup-content .popup-gif { width: 75px; height: 75px; }
+    }
+
+    .sparkle {
+      position: absolute;
+      color: rgba(212, 175, 55, 0.08);
+      font-size: 1.6rem;
+      pointer-events: none;
+      animation: sparkleFloat 8s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+    @keyframes sparkleFloat {
+      0% { transform: translateY(0px) rotate(0deg) scale(0.8); opacity: 0.1; }
+      100% { transform: translateY(-20px) rotate(12deg) scale(1.2); opacity: 0.3; }
+    }
+    .float-heart {
+      position: absolute;
+      color: rgba(212, 175, 55, 0.04);
+      font-size: 1rem;
+      pointer-events: none;
+      animation: heartFloat 10s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+    @keyframes heartFloat {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.04; }
+      100% { transform: translate(-15px, -30px) scale(1.4); opacity: 0.12; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+
+  <div class="sparkle" style="top: 6%; left: 8%;">✦</div>
+  <div class="sparkle" style="bottom: 14%; right: 6%; font-size: 1.2rem; animation-duration: 10s;">✧</div>
+  <div class="sparkle" style="top: 22%; right: 10%; font-size: 0.9rem; animation-duration: 12s;">✦</div>
+  <div class="float-heart" style="top: 15%; left: 4%;"><i class="fas fa-heart"></i></div>
+  <div class="float-heart" style="bottom: 20%; right: 4%; animation-duration: 14s;"><i class="fas fa-heart"></i></div>
+
+  <div class="love-card">
+
+    <a href="#" class="back-btn" onclick="history.back(); return false;">
+      <i class="fas fa-arrow-left"></i> back
+    </a>
+
+    <div style="margin-top: 0.8rem;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; opacity:0.4; font-size:0.6rem; color:#b8a88a; letter-spacing:2px;">
+        <i class="fas fa-paw" style="color:#d4af37;"></i> <span style="font-weight:300;">pick a cat</span> <i class="fas fa-paw" style="color:#d4af37;"></i>
+      </div>
+      <h1 class="title">purr <span>·</span> love</h1>
+      <div class="sub">tap any cat to see its message</div>
+    </div>
+
+    <div class="cat-garden">
+      <div class="garden-title">
+        <i class="fas fa-cat"></i> choose your kitty <i class="fas fa-cat"></i>
+      </div>
+      <div class="cat-grid" id="catGrid">
+        <div class="cat-sticker" data-index="0">
+          <img src="scuba cat.gif" alt="dancing cat" class="cat-gif" />
+        </div>
+        <div class="cat-sticker" data-index="1">
+          <img src="ahh cat.gif" alt="jaw drop cat" class="cat-gif" />
+        </div>
+        <div class="cat-sticker" data-index="2">
+          <img src="no cat.gif" alt="side eye cat" class="cat-gif" />
+        </div>
+        <div class="cat-sticker" data-index="3">
+          <img src="crying cat.gif" alt="crying cat" class="cat-gif" />
+        </div>
+      </div>
+      <div class="game-feedback" id="gameFeedback">
+        <i class="fas fa-hand-pointer"></i> tap any cat to reveal its message
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <i class="fas fa-circle" style="font-size:0.3rem;"></i>
+      <span>with love <i class="fas fa-heart" style="color:#d4af37; font-size:0.6rem;"></i> always</span>
+      <i class="fas fa-circle" style="font-size:0.3rem;"></i>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content" id="popupContent">
+      <img src="" alt="cat" class="popup-gif" id="popupGif" />
+      <h2 id="popupTitle">you picked <span>love</span></h2>
+      <div class="message" id="popupMessage">Every cat holds a little magic.</div>
+      <div class="sub-message" id="popupSub"><i class="fas fa-feather-alt"></i> a gentle purr <i class="fas fa-feather-alt"></i></div>
+      <div class="popup-hint">
+        <i class="fas fa-chevron-up"></i> tap anywhere to close <i class="fas fa-chevron-up"></i>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+
+      // 🐱 CUSTOM MESSAGES FOR EACH CAT based on their expression/action
+      const catMessages = [{
+        title: 'dancing',
+        message: 'Dance like nobody\'s watching – your joy is contagious! Keep moving, keep grooving, and let your heart lead the way.',
+        sub: 'stay groovy 🕺✨'
+      }, {
+        title: 'jaw-dropped',
+        message: 'Life is full of jaw-dropping moments! Stay open to wonder, and let every surprise remind you how magical this world can be.',
+        sub: 'stay amazed 😲✨'
+      }, {
+        title: 'sassy',
+        message: 'That side-eye says it all – you know your worth and you\'re not afraid to show it. Confidence looks good on you!',
+        sub: 'stay fierce 😼🔥'
+      }, {
+        title: 'emotional',
+        message: 'It\'s okay to feel deeply. Your tears are a sign of a heart that loves fully, and that is your greatest strength.',
+        sub: 'stay soft & strong 💕😿'
+      }];
+
+      const cats = document.querySelectorAll('.cat-sticker');
+      const feedback = document.getElementById('gameFeedback');
+      const popupOverlay = document.getElementById('popupOverlay');
+      const popupContent = document.getElementById('popupContent');
+      const popupGif = document.getElementById('popupGif');
+      const popupTitle = document.getElementById('popupTitle');
+      const popupMessage = document.getElementById('popupMessage');
+      const popupSub = document.getElementById('popupSub');
+
+      let viewedCats = new Set();
+
+      function showPopup(index) {
+        const data = catMessages[index];
+        const catElement = cats[index];
+        const gifSrc = catElement.querySelector('.cat-gif').src;
+
+        // Set the popup GIF to the same one the user clicked
+        popupGif.src = gifSrc;
+        popupGif.alt = data.title + ' cat';
+
+        popupTitle.innerHTML = `you picked <span>${data.title}</span>`;
+        popupMessage.textContent = data.message;
+        popupSub.innerHTML = `<i class="fas fa-feather-alt"></i> ${data.sub} <i class="fas fa-feather-alt"></i>`;
+        popupOverlay.classList.add('active');
+        popupOverlay.dataset.activeIndex = index;
+
+        if (!viewedCats.has(index)) {
+          viewedCats.add(index);
+          catElement.classList.add('viewed');
+
+          const total = cats.length;
+          const viewed = viewedCats.size;
+          if (viewed === total) {
+            feedback.innerHTML = `<i class="fas fa-crown" style="color:#d4af37;"></i> you've seen all four kitties! purr-fect! 🐱`;
+            feedback.style.color = '#d4af37';
+          } else {
+            feedback.innerHTML = `<i class="fas fa-check-circle" style="color:#d4af37;"></i> ${viewed} of ${total} seen. tap any cat to re-read!`;
+            feedback.style.color = '#d4c8b0';
+          }
+        } else {
+          feedback.innerHTML = `<i class="fas fa-redo-alt" style="color:#d4af37;"></i> revisiting ${data.title} kitty!`;
+          feedback.style.color = '#d4c8b0';
+        }
+      }
+
+      function hidePopup() {
+        popupOverlay.classList.remove('active');
+        popupOverlay.dataset.activeIndex = '';
+      }
+
+      popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay || e.target === popupContent || popupContent.contains(e.target)) {
+          hidePopup();
+        }
+      });
+
+      function pickCat(index) {
+        showPopup(index);
+      }
+
+      cats.forEach((cat, idx) => {
+        cat.addEventListener('click', function(e) {
+          e.stopPropagation();
+          pickCat(idx);
+        });
+      });
+
+      console.log('🐱 cat garden ready – each cat has its own unique message!');
+    })();
+  </script>
+
+</body>
+</html>
