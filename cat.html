@@ -194,7 +194,6 @@
       margin: 0 4px;
     }
 
-    /* 👇 2x2 GRID LAYOUT */
     .cat-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -280,7 +279,7 @@
       border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
-    /* 👇 POP-UP - FULLY RESPONSIVE, NO SCROLLING NEEDED */
+    /* 👇 POPUP - COMPACT & FITS PERFECTLY */
     .popup-overlay {
       position: fixed;
       inset: 0;
@@ -294,7 +293,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), backdrop-filter 0.6s ease;
-      padding: 1rem;
+      padding: 0.8rem;
     }
     .popup-overlay.active {
       opacity: 1;
@@ -304,12 +303,10 @@
     .popup-content {
       background: #f5ede4;
       background: linear-gradient(145deg, #faf3ea, #e8ddd0);
-      border-radius: 2.5rem;
-      padding: 1.8rem 1.5rem 2rem;
-      max-width: 400px;
+      border-radius: 2rem;
+      padding: 1.2rem 1.2rem 1.4rem;
+      max-width: 360px;
       width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
       box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.2);
       border: 1px solid rgba(212, 175, 55, 0.15);
       text-align: center;
@@ -322,27 +319,27 @@
     }
 
     .popup-content .popup-gif {
-      width: 120px;
-      height: 120px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
       border-radius: 50%;
       display: block;
-      margin: 0 auto 0.5rem;
+      margin: 0 auto 0.3rem;
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
       animation: popCatFloat 2s infinite alternate ease-in-out;
       background: transparent;
     }
     @keyframes popCatFloat {
       0% { transform: translateY(0) scale(1) rotate(-3deg); }
-      100% { transform: translateY(-8px) scale(1.05) rotate(3deg); }
+      100% { transform: translateY(-6px) scale(1.05) rotate(3deg); }
     }
 
     .popup-content h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #2a1f18;
-      margin: 0.2rem 0 0.3rem;
+      margin: 0.1rem 0 0.2rem;
     }
     .popup-content h2 span {
       color: #d4af37;
@@ -352,33 +349,33 @@
     .popup-content .message {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1rem;
+      font-size: 0.85rem;
       color: #3a2a1e;
-      line-height: 1.5;
-      padding: 0.3rem 0;
+      line-height: 1.4;
+      padding: 0.3rem 0.2rem;
       border-top: 1px solid rgba(212, 175, 55, 0.1);
       border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-      margin: 0.3rem 0;
+      margin: 0.2rem 0;
     }
     .popup-content .sub-message {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: #8a7a6a;
       letter-spacing: 1px;
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
     }
     .popup-content .sub-message i {
       color: #d4af37;
-      margin: 0 4px;
+      margin: 0 3px;
     }
 
     .popup-hint {
-      margin-top: 0.8rem;
-      font-size: 0.65rem;
+      margin-top: 0.6rem;
+      font-size: 0.6rem;
       color: #b8a88a;
       letter-spacing: 2px;
       text-transform: uppercase;
       border-top: 1px solid rgba(212, 175, 55, 0.08);
-      padding-top: 0.5rem;
+      padding-top: 0.4rem;
       animation: hintPulse 2s infinite ease-in-out;
     }
     .popup-hint i {
@@ -453,31 +450,31 @@
         height: 110px;
       }
       
-      /* 👇 POPUP FITS PERFECTLY ON MOBILE */
       .popup-content {
-        padding: 1.5rem 1.2rem 1.6rem;
-        border-radius: 2rem;
-        max-width: 340px;
-        max-height: 80vh;
+        padding: 1rem 1rem 1.2rem;
+        border-radius: 1.8rem;
+        max-width: 310px;
       }
       .popup-content h2 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
       .popup-content .popup-gif {
-        width: 90px;
-        height: 90px;
+        width: 75px;
+        height: 75px;
       }
       .popup-content .message {
-        font-size: 0.95rem;
-        line-height: 1.4;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        padding: 0.2rem 0.1rem;
       }
       .popup-content .sub-message {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+        margin-top: 0.2rem;
       }
       .popup-hint {
-        font-size: 0.6rem;
-        margin-top: 0.6rem;
-        padding-top: 0.4rem;
+        font-size: 0.55rem;
+        margin-top: 0.4rem;
+        padding-top: 0.3rem;
       }
       
       .back-btn {
@@ -523,35 +520,33 @@
         height: 90px;
       }
       
-      /* 👇 EVEN SMALLER POPUP FOR TINY SCREENS */
       .popup-content {
-        padding: 1.2rem 1rem 1.4rem;
-        max-width: 290px;
-        max-height: 75vh;
-        border-radius: 1.8rem;
+        padding: 0.8rem 0.8rem 1rem;
+        max-width: 260px;
+        border-radius: 1.5rem;
       }
       .popup-content .popup-gif {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 0.3rem;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0.2rem;
       }
       .popup-content h2 {
-        font-size: 1.1rem;
-        margin: 0.1rem 0 0.2rem;
+        font-size: 0.95rem;
+        margin: 0.05rem 0 0.1rem;
       }
       .popup-content .message {
-        font-size: 0.85rem;
-        line-height: 1.3;
-        padding: 0.2rem 0;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        padding: 0.15rem 0.1rem;
       }
       .popup-content .sub-message {
-        font-size: 0.65rem;
-        margin-top: 0.3rem;
+        font-size: 0.6rem;
+        margin-top: 0.15rem;
       }
       .popup-hint {
-        font-size: 0.55rem;
-        margin-top: 0.5rem;
-        padding-top: 0.4rem;
+        font-size: 0.5rem;
+        margin-top: 0.3rem;
+        padding-top: 0.25rem;
       }
       
       .back-btn {
@@ -674,14 +669,14 @@
   <script>
     (function() {
 
-      // 🐱 CUSTOM MESSAGES FOR EACH CAT based on their expression/action
+      // 🐱 SHORTER, PUNCHIER MESSAGES THAT FIT PERFECTLY
       const catMessages = [{
         title: 'dancing',
         message: 'Dance like nobody\'s watching – your joy is contagious! Keep moving, keep grooving, and let your heart lead the way.',
         sub: 'stay groovy 🕺✨'
       }, {
         title: 'jaw-dropped',
-        message: 'Life is full of jaw-dropping moments! Stay open to wonder, and let every surprise remind you how magical this world can be.',
+        message: 'Life is full of jaw-dropping moments! Stay open to wonder and let every surprise remind you how magical this world can be.',
         sub: 'stay amazed 😲✨'
       }, {
         title: 'sassy',
@@ -709,7 +704,6 @@
         const catElement = cats[index];
         const gifSrc = catElement.querySelector('.cat-gif').src;
 
-        // Set the popup GIF to the same one the user clicked
         popupGif.src = gifSrc;
         popupGif.alt = data.title + ' cat';
 
@@ -760,7 +754,7 @@
         });
       });
 
-      console.log('🐱 cat garden ready – fully responsive popup!');
+      console.log('🐱 cat garden ready – compact popup that fits perfectly!');
     })();
   </script>
 
