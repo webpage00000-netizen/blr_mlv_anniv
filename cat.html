@@ -279,21 +279,25 @@
       border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
-    /* 👇 POPUP - COMPACT & FITS PERFECTLY */
+    /* 👇 POPUP - INSIDE THE CONTAINER */
     .popup-overlay {
-      position: fixed;
-      inset: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 999;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), backdrop-filter 0.6s ease;
-      padding: 0.8rem;
+      transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-radius: 3.5rem;
+      padding: 1.5rem;
     }
     .popup-overlay.active {
       opacity: 1;
@@ -305,17 +309,19 @@
       background: linear-gradient(145deg, #faf3ea, #e8ddd0);
       border-radius: 2rem;
       padding: 1.2rem 1.2rem 1.4rem;
-      max-width: 360px;
+      max-width: 340px;
       width: 100%;
-      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
       border: 1px solid rgba(212, 175, 55, 0.15);
       text-align: center;
-      transform: scale(0.85) translateY(30px) rotate(-2deg);
-      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: scale(0.85) translateY(20px);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       cursor: pointer;
+      max-height: 90%;
+      overflow-y: auto;
     }
     .popup-overlay.active .popup-content {
-      transform: scale(1) translateY(0) rotate(0deg);
+      transform: scale(1) translateY(0);
     }
 
     .popup-content .popup-gif {
@@ -450,10 +456,14 @@
         height: 110px;
       }
       
+      .popup-overlay {
+        padding: 1rem;
+        border-radius: 2.5rem;
+      }
       .popup-content {
         padding: 1rem 1rem 1.2rem;
         border-radius: 1.8rem;
-        max-width: 310px;
+        max-width: 300px;
       }
       .popup-content h2 {
         font-size: 1.1rem;
@@ -520,9 +530,13 @@
         height: 90px;
       }
       
+      .popup-overlay {
+        padding: 0.8rem;
+        border-radius: 2rem;
+      }
       .popup-content {
         padding: 0.8rem 0.8rem 1rem;
-        max-width: 260px;
+        max-width: 250px;
         border-radius: 1.5rem;
       }
       .popup-content .popup-gif {
@@ -652,24 +666,25 @@
       <span>with love <i class="fas fa-heart" style="color:#d4af37; font-size:0.5rem;"></i> always</span>
       <i class="fas fa-circle" style="font-size:0.3rem;"></i>
     </div>
-  </div>
 
-  <div class="popup-overlay" id="popupOverlay">
-    <div class="popup-content" id="popupContent">
-      <img src="" alt="cat" class="popup-gif" id="popupGif" />
-      <h2 id="popupTitle">you picked <span>love</span></h2>
-      <div class="message" id="popupMessage">Every cat holds a little magic.</div>
-      <div class="sub-message" id="popupSub"><i class="fas fa-feather-alt"></i> a gentle purr <i class="fas fa-feather-alt"></i></div>
-      <div class="popup-hint">
-        <i class="fas fa-chevron-up"></i> tap anywhere to close <i class="fas fa-chevron-up"></i>
+    <!-- 👇 POPUP INSIDE THE CONTAINER -->
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-content" id="popupContent">
+        <img src="" alt="cat" class="popup-gif" id="popupGif" />
+        <h2 id="popupTitle">you picked <span>love</span></h2>
+        <div class="message" id="popupMessage">Every cat holds a little magic.</div>
+        <div class="sub-message" id="popupSub"><i class="fas fa-feather-alt"></i> a gentle purr <i class="fas fa-feather-alt"></i></div>
+        <div class="popup-hint">
+          <i class="fas fa-chevron-up"></i> tap anywhere to close <i class="fas fa-chevron-up"></i>
+        </div>
       </div>
     </div>
+
   </div>
 
   <script>
     (function() {
 
-      // 🐱 SHORTER, PUNCHIER MESSAGES THAT FIT PERFECTLY
       const catMessages = [{
         title: 'dancing',
         message: 'Dance like nobody\'s watching – your joy is contagious! Keep moving, keep grooving, and let your heart lead the way.',
@@ -754,7 +769,7 @@
         });
       });
 
-      console.log('🐱 cat garden ready – compact popup that fits perfectly!');
+      console.log('🐱 cat garden ready – popup is now inside the container!');
     })();
   </script>
 
